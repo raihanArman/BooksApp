@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/detailFragment">
 
 
     <fragment
@@ -18,4 +18,8 @@
         android:id="@+id/nav_slideshow"
         android:name="id.co.cobadrawer.ui.slideshow.SlideshowFragment"
         android:label="SlideshowFragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="id.co.booksapp.ui.DetailFragment"
+        android:label="DetailFragment" />
 </navigation>
