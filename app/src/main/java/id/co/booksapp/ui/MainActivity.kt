@@ -3,6 +3,7 @@ package id.co.booksapp.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -46,10 +47,16 @@ class MainActivity : AppCompatActivity() {
                 when(destination.id){
                     R.id.nav_home,
                     R.id.nav_gallery,
-                    R.id.nav_slideshow ->
+                    R.id.nav_slideshow -> {
+                        binding.layoutDashboard.ivBack.visibility = View.GONE
+                        binding.layoutDashboard.ivUser.visibility = View.VISIBLE
                         binding.drawerLayout.closeDrawer(Gravity.RIGHT)
-                    else ->
+                    }
+                    else -> {
                         binding.drawerLayout.closeDrawer(Gravity.RIGHT)
+                        binding.layoutDashboard.ivUser.visibility = View.GONE
+                        binding.layoutDashboard.ivBack.visibility = View.VISIBLE
+                    }
                 }
             }
 

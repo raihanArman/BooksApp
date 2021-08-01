@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/detailFragment">
+    app:startDestination="@+id/profileFragment">
 
 
     <fragment
@@ -13,7 +13,11 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="id.co.cobadrawer.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_nav_home_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="id.co.cobadrawer.ui.slideshow.SlideshowFragment"
@@ -22,4 +26,20 @@
         android:id="@+id/detailFragment"
         android:name="id.co.booksapp.ui.DetailFragment"
         android:label="DetailFragment" />
+    <fragment
+        android:id="@+id/transaksiFragment"
+        android:name="id.co.booksapp.ui.TransaksiFragment"
+        android:label="TransaksiFragment" />
+    <fragment
+        android:id="@+id/moreBookFragment"
+        android:name="id.co.booksapp.ui.MoreBookFragment"
+        android:label="MoreBookFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="id.co.booksapp.ui.HistoryFragment"
+        android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="id.co.booksapp.ui.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

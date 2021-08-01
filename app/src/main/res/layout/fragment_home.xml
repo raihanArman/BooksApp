@@ -26,7 +26,7 @@
                 android:background="@drawable/bg_input"
                 android:drawableLeft="@drawable/ic_baseline_search_24"
                 android:drawablePadding="5dp"
-                android:hint="Cari materi"
+                android:hint="Cari buku"
                 android:padding="10dp"
                 android:textColorHint="#E4E4E4"
                 app:layout_constraintEnd_toEndOf="parent"

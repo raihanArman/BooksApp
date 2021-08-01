@@ -6,5 +6,6 @@ data class Book(
     var author: String ?= "",
     var desc: String ?= "",
     var rate: Float ?= 0.0f,
-    var imageUrl: String ?= ""
+    var imageUrl: String ?= "",
+    var price: String ?= ""
 )

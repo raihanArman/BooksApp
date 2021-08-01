@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import id.co.booksapp.R
 import id.co.booksapp.databinding.FragmentDetailBinding
@@ -31,6 +32,10 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupBottomsheet()
+
+        Glide.with(this)
+            .load("https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579332582l/50049513._SX318_.jpg")
+            .into(binding.ivBook)
 
     }
     private fun setupBottomsheet(){

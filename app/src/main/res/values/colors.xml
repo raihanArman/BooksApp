@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="title">#717171</color>
     <color name="rate">#FFEB3B</color>
+    <color name="colorGrey">#C7C7C7</color>
 </resources>

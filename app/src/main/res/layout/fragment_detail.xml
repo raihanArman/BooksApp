@@ -18,38 +18,107 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="240dp">
                 <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
-                    android:layout_height="140dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="40dp">
+                    android:layout_width="150dp"
+                    android:layout_height="190dp"
+                    android:layout_centerInParent="true"
+                    app:cardCornerRadius="10dp">
 
                     <ImageView
                         android:id="@+id/iv_book"
-                        android:layout_width="100dp"
-                        android:layout_height="140dp" />
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/akar"/>
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/bottomSheet"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:elevation="20dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/shp_white_top_16dp"
                 app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:text="ammino"
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="80dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_back"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Rp. 20.000"
+                    android:textColor="#4CAF50"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Generasi Kembali Ke Akar"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Dr. Muhammad faisal"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Tema utamanya berbicara tentang generasi muda dengan metode penelitian yang melibatkan interaksi langsung dengan mode demografi. Lalu dari penelitian tersebut, banyak cerita yang pada akhirnya dikumpulkan."
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Transaksi"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
