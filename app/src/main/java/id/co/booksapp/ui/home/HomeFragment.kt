@@ -1,28 +1,35 @@
 package id.co.cobadrawer.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 import id.co.booksapp.R
 import id.co.booksapp.adapter.ExploreAdapter
 import id.co.booksapp.adapter.TrandingAdapter
 import id.co.booksapp.databinding.FragmentHomeBinding
 import id.co.booksapp.model.Book
+import id.co.booksapp.model.response.ResponseState
+import id.co.booksapp.ui.DetailActivity
+import id.co.booksapp.ui.MoreBookActivity
+import id.co.booksapp.ui.SearchActivity
+import id.co.booksapp.ui.base.BaseFragment
+import id.co.booksapp.viewmodel.HomeViewModel
 
-class HomeFragment : Fragment() {
+@AndroidEntryPoint
+class HomeFragment : BaseFragment() {
 
     private lateinit var dataBinding : FragmentHomeBinding
     private val trandingAdapter: TrandingAdapter by lazy {
-        TrandingAdapter()
+        TrandingAdapter{
+            showDetail(it)
+        }
     }
 
     private val exploreAdapter: ExploreAdapter by lazy {
@@ -30,6 +37,8 @@ class HomeFragment : Fragment() {
           showDetail(it)
         }
     }
+
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,97 +53,73 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
-        setupData()
+        setupObserve()
+
+        dataBinding.ivMoreExplore.setOnClickListener {
+            val intent = Intent(requireContext(), MoreBookActivity::class.java)
+            startActivity(intent)
+        }
+
+        dataBinding.ivMoreTranding.setOnClickListener {
+            val intent = Intent(requireContext(), MoreBookActivity::class.java)
+            startActivity(intent)
+        }
+
+        dataBinding.etSearch.setOnClickListener {
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
-    private fun setupData() {
-        val listBook = mutableListOf<Book>()
-        listBook.add(Book(
-            "1",
-            "Generasi kembali ke aka",
-            "by Dr. Muhammad faisal",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1579332582l/50049513._SX318_.jpg"
-        ))
-        listBook.add(Book(
-            "1",
-            "Sebuah seni untuk bersikap bodo amat",
-            "by Mark Manson",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://lh3.googleusercontent.com/proxy/ulvqwBuFWOk9IupP9YpKw2lIgA5IOtD__po3i5sGqGTEWH13Y6e60sK1-rZM--sxY7qoEueJ3Tcf_TQhe7Mhs11avTSwMq6gg2-zfIFI7PPPlRkhhrZ8UmZZn-7InD6XEnu14yzJDTdeaXPSsFNQzKWbBM7rXCViELqOuNs_hj86bpFfwhDJzBfcQg"
-        ))
-        listBook.add(Book(
-            "1",
-            "Pulang",
-            "by Tere Lye",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1441194791l/26211806._SY475_.jpg"
-        ))
-        listBook.add(Book(
-            "1",
-            "Mantap Djiwa",
-            "author",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://akcdn.detik.net.id/community/media/visual/2021/03/23/jesse-lingard.jpeg?w=700&q=90"
-        ))
-        listBook.add(Book(
-            "1",
-            "Mantap Djiwa",
-            "author",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://akcdn.detik.net.id/community/media/visual/2021/03/23/jesse-lingard.jpeg?w=700&q=90"
-        ))
-        listBook.add(Book(
-            "1",
-            "Mantap Djiwa",
-            "author",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://akcdn.detik.net.id/community/media/visual/2021/03/23/jesse-lingard.jpeg?w=700&q=90"
-        ))
-        listBook.add(Book(
-            "1",
-            "Mantap Djiwa",
-            "author",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://akcdn.detik.net.id/community/media/visual/2021/03/23/jesse-lingard.jpeg?w=700&q=90"
-        ))
-        listBook.add(Book(
-            "1",
-            "Mantap Djiwa",
-            "author",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://akcdn.detik.net.id/community/media/visual/2021/03/23/jesse-lingard.jpeg?w=700&q=90"
-        ))
-        listBook.add(Book(
-            "1",
-            "Mantap Djiwa",
-            "author",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://akcdn.detik.net.id/community/media/visual/2021/03/23/jesse-lingard.jpeg?w=700&q=90"
-        ))
-        listBook.add(Book(
-            "1",
-            "Mantap Djiwa",
-            "author",
-            "Diskusi mengenai teori generasi tengah berkembang menjadi “bola salju” yang bergulir liar. Salah satu narasi yang berkembang di berbagai media adalah penafsiran tentang generasi yang bak membaca ramalan horoskop. Sebagai contoh, seseorang yang lahir pada 1981 hingga awal 2000 dianggap sebagai Generasi Milenial—yang memiliki . . .",
-            3.0f,
-            "https://akcdn.detik.net.id/community/media/visual/2021/03/23/jesse-lingard.jpeg?w=700&q=90"
-        ))
-
-        exploreAdapter.setListBook(listBook)
-        trandingAdapter.setListBook(listBook)
-
+    private fun setupObserve() {
+        viewModel.getPopularBook().observe(viewLifecycleOwner){response ->
+            when(response){
+                is ResponseState.Success ->{
+                    setupDataPopular(response.data)
+                }
+                is ResponseState.Error ->{
+                    Toast.makeText(requireContext(), response.errorMessage, Toast.LENGTH_SHORT).show()
+                }
+                is ResponseState.Loading ->{
+                    progressVisible()
+                }
+            }
+        }
+        viewModel.getAllBook().observe(viewLifecycleOwner){response ->
+            when(response){
+                is ResponseState.Success ->{
+                    setupDataAll(response.data)
+                    progressInvisble()
+                }
+                is ResponseState.Error ->{
+                    Toast.makeText(requireContext(), response.errorMessage, Toast.LENGTH_SHORT).show()
+                }
+                is ResponseState.Loading ->{
+                    progressVisible()
+                }
+            }
+        }
     }
+
+    private fun progressVisible(){
+        dataBinding.progressHome.visibility = View.VISIBLE
+        dataBinding.layoutHomeContent.visibility = View.INVISIBLE
+    }
+
+    private fun progressInvisble(){
+        dataBinding.progressHome.visibility = View.INVISIBLE
+        dataBinding.layoutHomeContent.visibility = View.VISIBLE
+    }
+
+    private fun setupDataAll(data: List<Book>) {
+        exploreAdapter.setListBook(data)
+    }
+
+    private fun setupDataPopular(data: List<Book>) {
+        trandingAdapter.setListBook(data)
+    }
+
 
     private fun setupAdapter() {
         with(dataBinding){
@@ -149,7 +134,9 @@ class HomeFragment : Fragment() {
     }
 
     fun showDetail(book: Book){
-        findNavController().navigate(R.id.action_nav_home_to_detailFragment)
+        val intent = Intent(requireContext(), DetailActivity::class.java)
+        intent.putExtra("book", book)
+        startActivity(intent)
     }
 
 }

@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 import id.co.booksapp.R
 import id.co.booksapp.databinding.ActivityLoginBinding
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
 
@@ -15,7 +17,7 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,
             R.layout.activity_login
         )
-        setFragment(SignUpFragment())
+        setFragment(SignInFragment())
     }
 
     private fun setFragment(fragment: Fragment){

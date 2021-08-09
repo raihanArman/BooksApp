@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -25,14 +25,6 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.95" />
 
-        <include
-            android:id="@+id/header_dashboard"
-            layout="@layout/header_menu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
         <LinearLayout
             android:id="@+id/ll_menu"
@@ -40,9 +32,9 @@
             android:layout_height="wrap_content"
             android:gravity="start|center"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/header_dashboard"
+            app:layout_constraintEnd_toEndOf="@id/gl_hamburger_end"
             app:layout_constraintStart_toStartOf="@id/gl_hamburger_start"
-            app:layout_constraintEnd_toEndOf="@id/gl_hamburger_end">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:id="@+id/ll_First"
@@ -55,17 +47,16 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:contentDescription="First Image"
-                    android:scaleType="centerInside"/>
+                    android:scaleType="centerInside" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="First"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -80,8 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
-                    android:textSize="30sp"
-                    />
+                    android:textSize="30sp" />
 
             </RelativeLayout>
 
@@ -96,8 +86,8 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:contentDescription="Second Image"
                     android:scaleType="centerInside" />
 
@@ -105,8 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Second"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -121,8 +110,8 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:contentDescription="Third Image"
                     android:scaleType="centerInside" />
 
@@ -130,8 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Third"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -146,8 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
-                    android:textSize="30sp"
-                    />
+                    android:textSize="30sp" />
 
             </RelativeLayout>
 
@@ -162,8 +149,8 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:contentDescription="Fourth Image"
                     android:scaleType="centerInside" />
 
@@ -171,8 +158,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fourth"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -187,17 +173,16 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:contentDescription="Fifth Image"
-                    android:scaleType="centerInside"/>
+                    android:scaleType="centerInside" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fifth"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -212,8 +197,8 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:contentDescription="Sixth Image"
                     android:scaleType="centerInside" />
 
@@ -221,8 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sixth"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -237,17 +221,16 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:contentDescription="Seveth Image"
-                    android:scaleType="centerInside"/>
+                    android:scaleType="centerInside" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Seveth"
-                    android:textSize="15sp"
-                    />
+                    android:textSize="15sp" />
 
             </LinearLayout>
 

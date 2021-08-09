@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import id.co.booksapp.util.Constant
 import id.co.booksapp.R
 import id.co.booksapp.databinding.ItemHistoryBinding
-import id.co.booksapp.model.History
+import id.co.booksapp.model.Transaction
 
 class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
-    private val listHistory = ArrayList<History>()
+    private val listHistory = ArrayList<Transaction>()
 
-    fun setHistory(listHistory: List<History>){
+    fun setHistory(listHistory: List<Transaction>){
         this.listHistory.clear()
         this.listHistory.addAll(listHistory)
         notifyDataSetChanged()
@@ -33,13 +34,15 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
     override fun getItemCount(): Int = listHistory.size
 
     inner class ViewHolder(val binding: ItemHistoryBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(history: History){
+        fun bind(history: Transaction){
             with(binding){
                 val date = DateFormat.format("dd-MM-yyyy", history.date).toString()
+                val dateReturn = DateFormat.format("dd-MM-yyyy", history.dateReturn).toString()
                 tvDate.text = date
                 tvTitle.text = history.book.title
                 tvAuthor.text = history.book.author
-                tvHarga.text = history.book.price
+                tvHarga.text = Constant.rupiahFormat(history.total!!.toInt())
+                tvDateReturn.text = dateReturn
             }
         }
     }

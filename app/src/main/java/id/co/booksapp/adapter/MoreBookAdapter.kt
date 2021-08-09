@@ -9,6 +9,7 @@ import id.co.booksapp.R
 import id.co.booksapp.databinding.ItemMoreBookBinding
 import id.co.booksapp.databinding.ItemTrandingBinding
 import id.co.booksapp.model.Book
+import id.co.booksapp.util.Constant
 
 class MoreBookAdapter: RecyclerView.Adapter<MoreBookAdapter.ViewHolder>() {
 
@@ -39,7 +40,7 @@ class MoreBookAdapter: RecyclerView.Adapter<MoreBookAdapter.ViewHolder>() {
                 tvAuthor.text = book.author
                 tvTitle.text = book.title
                 Glide.with(itemView.context)
-                    .load(book.imageUrl)
+                    .load(Constant.BASE_URL_IMAGE+book.imageUrl)
                     .into(ivBook)
             }
         }

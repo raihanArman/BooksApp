@@ -1,9 +1,32 @@
 package id.co.booksapp.model
 
+import android.os.Parcelable
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
+@Parcelize
 data class History(
+    @SerializedName("id")
+    @Expose
     var id: String ?= "",
+
+    @SerializedName("created_at")
+    @Expose
     var date: Date,
-    var book: Book
-)
+
+    @SerializedName("date_return")
+    @Expose
+    var dateReturn: Date,
+
+    @SerializedName("book")
+    @Expose
+    var book: Book,
+    @SerializedName("days")
+    @Expose
+    var days: String ?= "",
+    @SerializedName("total")
+    @Expose
+    var total: String ?= ""
+): Parcelable

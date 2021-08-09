@@ -9,6 +9,7 @@ import id.co.booksapp.R
 import id.co.booksapp.databinding.ItemExploreBinding
 import id.co.booksapp.databinding.ItemTrandingBinding
 import id.co.booksapp.model.Book
+import id.co.booksapp.util.Constant
 
 class ExploreAdapter(val showDetail: (Book) -> Unit): RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
 
@@ -38,11 +39,12 @@ class ExploreAdapter(val showDetail: (Book) -> Unit): RecyclerView.Adapter<Explo
         fun bind(book: Book){
             with(binding){
                 Glide.with(itemView.context)
-                    .load(book.imageUrl)
+                    .load(Constant.BASE_URL_IMAGE+book.imageUrl)
                     .into(ivBook)
                 tvTitle.text = book.title
                 tvAuthor.text = book.author
                 tvDesc.text = book.desc
+                tvRate.text = book.rate.toString()
                 ratingBar.rating = book.rate!!
             }
 

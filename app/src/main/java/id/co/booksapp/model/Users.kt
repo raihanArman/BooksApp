@@ -1,8 +1,11 @@
 package id.co.booksapp.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Users(
     @SerializedName("id")
     @Expose
@@ -20,12 +23,9 @@ data class Users(
     @Expose
     var status: String ?= "",
 
-    @SerializedName("last_score")
+    @SerializedName("telp")
     @Expose
-    var lastScore: String ?= "",
+    var telp: String ?= "",
 
-    @SerializedName("total_quiz")
-    @Expose
-    var sumQuiz: String ?= "",
 
-)
+): Parcelable

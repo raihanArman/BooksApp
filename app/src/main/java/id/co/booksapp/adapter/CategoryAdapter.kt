@@ -1,8 +1,13 @@
 package id.co.booksapp.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.ColorStateList
+import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -10,9 +15,11 @@ import id.co.booksapp.R
 import id.co.booksapp.databinding.ItemCategoryBinding
 import id.co.booksapp.model.Category
 
-class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryAdapter(val showBookByCategory: (Category) -> Unit): RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     private val listCategory = ArrayList<Category>()
+    var row_index = -1
+    var categoryViewHolderList = arrayListOf<ViewHolder>()
 
     fun setListCategory(listCategory: List<Category>){
         this.listCategory.clear()
@@ -26,14 +33,17 @@ class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
         return ViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = listCategory[position]
+        categoryViewHolderList.add(holder)
         holder.bind(category)
     }
 
     override fun getItemCount(): Int = listCategory.size
 
     inner class ViewHolder(val binding: ItemCategoryBinding): RecyclerView.ViewHolder(binding.root){
+        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         @SuppressLint("ResourceAsColor")
         fun bind(category: Category){
             with(binding){
@@ -41,9 +51,31 @@ class CategoryAdapter: RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
                 if(adapterPosition == 0){
                     tvCategory.setBackgroundResource(R.drawable.bg_select)
-                    tvCategory.setTextColor(R.color.white)
+                    tvCategory.setTextColor(itemView.context.resources.getColor(R.color.white))
                 }
+
+                itemView.setOnClickListener {
+                    row_index = adapterPosition
+                    for(positionAll in categoryViewHolderList.indices){
+                        Log.d("Amino", "applySelection posiyion all: ${positionAll}")
+                        applySelection(itemView.context, positionAll)
+                    }
+                    showBookByCategory(category)
+                }
+
             }
+        }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    private fun applySelection(context: Context, position: Int) {
+        if (row_index == position){
+            categoryViewHolderList[position].binding.tvCategory.setBackgroundResource(R.drawable.bg_select)
+            categoryViewHolderList[position].binding.tvCategory.setTextColor(context.resources.getColor(R.color.white))
+        }else{
+            categoryViewHolderList[position].binding.tvCategory.setBackgroundResource(R.drawable.bg_rounded)
+            categoryViewHolderList[position].binding.tvCategory.setTextColor(context.resources.getColor(R.color.colorGrey))
         }
     }
 

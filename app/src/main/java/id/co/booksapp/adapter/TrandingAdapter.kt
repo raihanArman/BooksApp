@@ -8,8 +8,9 @@ import com.bumptech.glide.Glide
 import id.co.booksapp.R
 import id.co.booksapp.databinding.ItemTrandingBinding
 import id.co.booksapp.model.Book
+import id.co.booksapp.util.Constant
 
-class TrandingAdapter: RecyclerView.Adapter<TrandingAdapter.ViewHolder>() {
+class TrandingAdapter(val showDetail: (Book) -> Unit): RecyclerView.Adapter<TrandingAdapter.ViewHolder>() {
 
     val listBook = ArrayList<Book>()
 
@@ -38,8 +39,11 @@ class TrandingAdapter: RecyclerView.Adapter<TrandingAdapter.ViewHolder>() {
                 tvAuthor.text = book.author
                 tvTitle.text = book.title
                 Glide.with(itemView.context)
-                    .load(book.imageUrl)
+                    .load(Constant.BASE_URL_IMAGE+book.imageUrl)
                     .into(ivBook)
+            }
+            itemView.setOnClickListener {
+                showDetail(book)
             }
         }
     }

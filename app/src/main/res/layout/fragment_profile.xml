@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.ProfileFragment">
+        tools:context=".ui.home.ProfileFragment">
 
 
         <TextView
@@ -34,6 +34,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="16dp"
+            android:src="@drawable/man"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -52,7 +53,7 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_user" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/tv_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -80,7 +81,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
@@ -88,7 +89,7 @@
             android:textColor="@color/colorGrey"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView14"
-            app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintStart_toStartOf="@+id/tv_user"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <TextView
@@ -105,6 +106,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
         <TextView
+            android:id="@+id/tv_telp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"
@@ -112,7 +114,7 @@
             android:textColor="@color/colorGrey"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView17"
-            app:layout_constraintStart_toStartOf="@+id/textView16"
+            app:layout_constraintStart_toStartOf="@+id/tv_email"
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
 
