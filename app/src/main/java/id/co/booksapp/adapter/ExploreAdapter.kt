@@ -45,7 +45,10 @@ class ExploreAdapter(val showDetail: (Book) -> Unit): RecyclerView.Adapter<Explo
                 tvAuthor.text = book.author
                 tvDesc.text = book.desc
                 tvRate.text = book.rate.toString()
-                ratingBar.rating = book.rate!!
+
+//                ratingBar.numStars = 1
+//                ratingBar.stepSize = 0.5f
+//                ratingBar.rating = book.rate!!
             }
 
             itemView.setOnClickListener {

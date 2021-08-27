@@ -94,7 +94,7 @@ class PinjamActivity : BaseActivity() {
             rb7Days.text = Constant.rupiahFormat(book.price7Days!!.toInt())+"/7 hari"
 
             Glide.with(this@PinjamActivity)
-                .load(book.imageUrl)
+                .load(Constant.BASE_URL_IMAGE+book.imageUrl)
                 .into(ivBook)
 
         }
